@@ -1,0 +1,42 @@
+{
+  "project_info": {
+    "project_number": "1036547284683",
+    "firebase_url": "https://schoolreportproject.firebaseio.com",
+    "project_id": "schoolreportproject",
+    "storage_bucket": "schoolreportproject.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1036547284683:android:114cd1d5bf616d84",
+        "android_client_info": {
+          "package_name": "rabbidcompany.schoolreportproject"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "1036547284683-eiusufrm2a74h4ut3lv7kk5151g1i5ul.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCjGsEr0Yx0xCrrnuvoghIyQPDbMdvR5bY"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 1,
+          "other_platform_oauth_client": []
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
