@@ -1,4 +1,4 @@
-package rabbidcompany.schoolreportproject.utils;
+package rabbidcompany.schoolreportproject.utilities;
 
 import rabbidcompany.schoolreportproject.BuildConfig;
 

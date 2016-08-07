@@ -1,12 +1,39 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/ActivityMainLayoutContainerID01"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="rabbidcompany.schoolreportproject.MainActivity">
+    android:orientation="vertical"
+    tools:context=".activities.MainActivity">
+
+    <android.support.v7.widget.Toolbar
+        android:id="@+id/ToolBarActivityMainID02"
+        android:layout_width="match_parent"
+        android:layout_height="?attr/actionBarSize"
+        android:background="@drawable/toolbar_background_image"
+        app:title=" ">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/app_name"
+            android:textColor="@color/colorWhite"
+            android:textSize="25sp"
+            android:layout_gravity="center"/>
+
+    </android.support.v7.widget.Toolbar>
 
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Hello World!" />
-</RelativeLayout>
+
+    <Button
+        android:id="@+id/ButtonGoToLoginPageID01"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Go to log in page"/>
+
+</LinearLayout>

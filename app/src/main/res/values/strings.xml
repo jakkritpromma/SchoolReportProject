@@ -1,3 +1,9 @@
 <resources>
-    <string name="app_name">SchoolReportProject</string>
+    <string name="app_name">School Report</string>
+    <string name="login_title">Log In Page</string>
+    <string name="username_title">Username</string>
+    <string name="password_title">Password</string>
+    <string name="button_login">Log In</string>
+    <string name="login_error_message">Username or Password is incorrect. Make a fragment too!</string>
+    <string name="register">Register? Press here.</string>
 </resources>

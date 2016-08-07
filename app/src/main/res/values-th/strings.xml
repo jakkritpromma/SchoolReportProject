@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">สมุดผลการเรียน</string>
+    <string name="login_title">หน้าล๊อคอิน</string>
+    <string name="username_title">ชื่อผู้ใช้</string>
+    <string name="password_title">รหัสผ่าน</string>
+    <string name="button_login">ล๊อคอิน</string>
+    <string name="register">กดที่นี่เพื่อลงทะเบียน</string>
+    <string name="login_error_message">ชื่อผู้ใช้หรือรหัสผ่านไม่ถูกต้อง ทำแฟรกเมนท์ด้วย!</string>
+</resources>
