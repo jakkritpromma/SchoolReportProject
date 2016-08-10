@@ -3,63 +3,164 @@ package rabbidcompany.schoolreportproject.activities;
 /**
  * Created by noneemotion on 5/8/2559.
  */
+
 import android.content.Context;
+import android.content.pm.ActivityInfo;
+import android.os.Bundle;
 import android.support.v7.app.ActionBarActivity;
+import android.text.Editable;
+import android.text.TextWatcher;
+import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.TextView;
+import android.widget.Toast;
 
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
+
+import rabbidcompany.schoolreportproject.R;
 import rabbidcompany.schoolreportproject.managers.UserManager;
+import rabbidcompany.schoolreportproject.users.User;
+import rabbidcompany.schoolreportproject.utilities.CustomViewGroup01;
 
-public class RegisterActivity extends ActionBarActivity {
+public class RegisterActivity extends ActionBarActivity implements View.OnClickListener, TextWatcher {
 
-    private EditText mUsername;
-    private EditText mPassword;
-    private EditText mConfirmPassword;
-    private Button mRegister;
+    /*********************************************************************************************
+     * *Variables(s)
+     *********************************************************************************************/
 
-    private Context mContext;
-    private UserManager mManager;
-/*
+    private EditText editTextEmail;
+    private EditText editTextPassword;
+    private TextView textViewPasswordStrenth;
+    private EditText editTextConfirmPassword;
+    private Button buttonRegister;
+    private UserManager userManager;
+
+    /*********************************************************************************************
+     * *Functions/Methods(s)
+     *********************************************************************************************/
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
         setContentView(R.layout.activity_register);
 
-        mManager = new UserManager(this);
-        mContext = this;
+        userManager = new UserManager(this);
 
-        mUsername = (EditText) findViewById(R.id.username);
-        mPassword = (EditText) findViewById(R.id.password);
-        mConfirmPassword = (EditText) findViewById(R.id.confirm_password);
-        mRegister = (Button) findViewById(R.id.button_register);
+        editTextEmail = (EditText) findViewById(R.id.EditTextEmailRegID01);
+        editTextPassword = (EditText) findViewById(R.id.EditTextPasswordRegID01);
+        editTextPassword.addTextChangedListener(this);
+        textViewPasswordStrenth = (TextView) findViewById(R.id.TextViewPasswordStrengthID01);
+        editTextConfirmPassword = (EditText) findViewById(R.id.EditTextConfirmPasswordRegID02);
+        buttonRegister = (Button) findViewById(R.id.ButtonRegisterID01);
+        buttonRegister.setOnClickListener(this);
+    }
 
-        mRegister.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
+    public boolean isEmailValid(String email) {
+        String ePattern ="^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@((\\[[0-9]{1,3}\\.[0-9]{1,3}\\.[0-9]{1,3}\\.[0-9]{1,3}\\])|(([a-zA-Z\\-0-9]+\\.)+[a-zA-Z]{2,}))$";
+        Pattern p = Pattern.compile(ePattern);
+        Matcher m = p.matcher(email);
+        return m.matches();
+    }
 
-                String username = mUsername.getText().toString().trim().toLowerCase();
-                String password = mPassword.getText().toString();
-                String confirmPassword = mConfirmPassword.getText().toString();
+    private void showToast(String text) {
+        Toast.makeText(RegisterActivity.this, text, Toast.LENGTH_SHORT).show();
+    }
+
+    private boolean isUpperCaseFound(String givenPassword) {
+        for (int i = 0; i < givenPassword.length(); i++) {
+            if (Character.isUpperCase(givenPassword.charAt(i))) {
+                return true;
+            }
+        }
+        return false;
+    }
+
+    private boolean isLowerCaseFound(String givenPassword) {
+        for (int i = 0; i < givenPassword.length(); i++) {
+            if (Character.isLowerCase(givenPassword.charAt(i))) {
+                return true;
+            }
+        }
+        return false;
+    }
+
+    private boolean isDigitFound(String givenPassword) {
+        for (int i = 0; i < givenPassword.length(); i++) {
+            if (Character.isDigit(givenPassword.charAt(i))) {
+                return true;
+            }
+        }
+        return false;
+    }
+
+    /*********************************************************************************************
+     * *Listeners(s)
+     *********************************************************************************************/
+    @Override
+    public void onClick(View v) {
+        if (v == buttonRegister) {
+            String email = editTextEmail.getText().toString();
+            String password = editTextPassword.getText().toString();
+            String confirmPassword = editTextConfirmPassword.getText().toString();
+
+            if (isEmailValid(email) == false) {
+                showToast(getString(R.string.incorrect_email_form));
+            } else {
+                //Check the password and the confirmed password.
 
                 if (password.equals(confirmPassword)) {
-                    User user = new User(username, password);
-                    long rowId = mManager.registerUser(user);
+                    boolean isSuccess = userManager.registerUser(email, password);
 
-                    if (rowId == -1) {
-                        String message = getString(R.string.register_error_message);
-                        Toast.makeText(mContext, message, Toast.LENGTH_SHORT).show();
+                    if (isSuccess) {
+                        showToast(getString(R.string.register_success));
+                        finish(); //Finish this activity.
                     } else {
-                        String message = getString(R.string.register_success);
-                        Toast.makeText(mContext, message, Toast.LENGTH_SHORT).show();
-                        finish();
+                        showToast(getString(R.string.register_error_messages));
                     }
 
                 } else {
-                    String message = getString(R.string.register_password_error);
-                    Toast.makeText(mContext, message, Toast.LENGTH_SHORT).show();
+                    showToast(getString(R.string.register_password_error));
                 }
 
             }
-        });
-    }*/
+        }
+    }
+
+    @Override
+    public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+
+    }
+
+    @Override
+    public void onTextChanged(CharSequence s, int start, int before, int count) {
+
+    }
+
+    @Override
+    public void afterTextChanged(Editable s) {
+        String givenPassword = s.toString();
+        int numberOfConditions = 0;
+
+        if (givenPassword.length() < 8) {
+            numberOfConditions--;
+        }
+        if (isUpperCaseFound(givenPassword) && isLowerCaseFound(givenPassword)) {
+            numberOfConditions++;
+        }
+        if (isDigitFound(givenPassword)) {
+            numberOfConditions++;
+        }
+        if (numberOfConditions <= 0) {
+            textViewPasswordStrenth.setText(getResources().getString(R.string.weak_password));
+            textViewPasswordStrenth.setTextColor(getResources().getColor(R.color.colorRed));
+        } else if (numberOfConditions == 1) {
+            textViewPasswordStrenth.setText(getResources().getString(R.string.normal_password));
+            textViewPasswordStrenth.setTextColor(getResources().getColor(R.color.colorYellow));
+        } else if (numberOfConditions == 2) {
+            textViewPasswordStrenth.setText(getResources().getString(R.string.strong_password));
+            textViewPasswordStrenth.setTextColor(getResources().getColor(R.color.colorGreen));
+        }
+    }
 }

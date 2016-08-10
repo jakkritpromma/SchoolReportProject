@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/colorPrimary"
+    android:orientation="vertical"
+    android:paddingLeft="24dp"
+    android:paddingRight="24dp">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"></LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="2.5"
+        android:background="@color/colorWhite"
+        android:gravity="center"
+        android:orientation="vertical"
+        android:padding="24dp">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="16dp"
+            android:text="@string/register_title"
+            android:textColor="@color/colorPrimaryDark"
+            android:textSize="22sp" />
+
+        <EditText
+            android:id="@+id/EditTextEmailRegID01"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="@string/email_title"
+            android:padding="12dp" />
+
+        <RelativeLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content">
+
+            <EditText
+                android:id="@+id/EditTextPasswordRegID01"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="@string/password_title"
+                android:padding="12dp" />
+
+            <TextView
+                android:id="@+id/TextViewPasswordStrengthID01"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentRight="true"
+                android:layout_centerVertical="true"
+                android:textSize="14dp"/>
+
+        </RelativeLayout>
+
+        <EditText
+            android:id="@+id/EditTextConfirmPasswordRegID02"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="left"
+            android:hint="@string/confirm_password_title"
+            android:padding="12dp" />
+
+        <Button
+            android:id="@+id/ButtonRegisterID01"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="14dp"
+            android:background="@drawable/selector_button_default"
+            android:text="@string/register_button"
+            android:textColor="@color/colorWhite"
+            android:textSize="18sp" />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"></LinearLayout>
+
+</LinearLayout>

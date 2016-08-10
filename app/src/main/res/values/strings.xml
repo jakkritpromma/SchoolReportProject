@@ -1,9 +1,22 @@
 <resources>
     <string name="app_name">School Report</string>
     <string name="login_title">Log In Page</string>
-    <string name="username_title">Username</string>
+    <string name="email_title">E-mail</string>
     <string name="password_title">Password</string>
+    <string name="confirm_password_title">Confirm Password</string>
     <string name="button_login">Log In</string>
-    <string name="login_error_message">Username or Password is incorrect. Make a fragment too!</string>
-    <string name="register">Register? Press here.</string>
+    <string name="register01">Register?</string>
+    <string name="register02"><u>Press here.</u></string>
+    <string name="register_button">Register</string>
+    <string name="login_error_message">E-mail or Password is incorrect. Make a fragment too!</string>
+    <string name="register_title">Registration Page</string>
+    <string name="register_success">Registration successful</string>
+    <string name="register_error_messages">Registration failed</string>
+    <string name="register_password_error">Password does not match.</string>
+    <string name="incorrect_email_form">E-mail format is incorrect.</string>
+    <string name="remember_email">Remember E-mail.</string>
+    <string name="weak_password">Weak</string>
+    <string name="normal_password">Normal</string>
+    <string name="strong_password">Strong</string>
+
 </resources>

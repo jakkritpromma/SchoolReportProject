@@ -20,7 +20,7 @@ public class SchoolReportApplication extends Application {
         super.onCreate();
         Fabric.with(this, new Crashlytics());
 
-        Toast.makeText(SchoolReportApplication.this, "SchoolReportApplication is called.", Toast.LENGTH_SHORT).show();
+        //Toast.makeText(SchoolReportApplication.this, "SchoolReportApplication is called.", Toast.LENGTH_SHORT).show();
 
         //You can do this in any activity, but do this in the application class
         //in order to make sure that it works for all codes.

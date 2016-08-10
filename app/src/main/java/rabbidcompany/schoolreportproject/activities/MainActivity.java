@@ -14,12 +14,11 @@ import com.crashlytics.android.Crashlytics;
 import io.fabric.sdk.android.Fabric;
 import rabbidcompany.schoolreportproject.R;
 
-public class MainActivity extends AppCompatActivity implements View.OnClickListener {
+public class MainActivity extends AppCompatActivity {
 
     Toolbar toolBarMainActivity01;
     Handler handler;
     Runnable runnable;
-    Button ButtonGoToLogInPageID01;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -35,6 +34,9 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         runnable = new Runnable() {
             @Override
             public void run() {
+
+                //Check
+
                 setContentView(R.layout.activity_main);
                 initInstance();
             }
@@ -46,15 +48,6 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         toolBarMainActivity01 = (Toolbar) findViewById(R.id.ToolBarActivityMainID02);
         setSupportActionBar(toolBarMainActivity01); //Tell this activity to use this Toolbar.
 
-        ButtonGoToLogInPageID01 = (Button) findViewById(R.id.ButtonGoToLoginPageID01);
-        ButtonGoToLogInPageID01.setOnClickListener(this);
     }
 
-    @Override
-    public void onClick(View v) {
-        if(v == ButtonGoToLogInPageID01) {
-            Intent intent = new Intent(this, LoginActivity.class);
-            startActivity(intent);
-        }
-    }
 }

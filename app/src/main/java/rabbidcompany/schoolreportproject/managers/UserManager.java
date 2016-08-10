@@ -14,20 +14,17 @@ import android.util.Log;
  */
 public class UserManager {
 
-    private final String KEY_PREFS = "prefs_user";
-    private final String KEY_USERNAME = "username";
-    private final String KEY_PASSWORD = "password";
     private SharedPreferences mPrefs;
     private SharedPreferences.Editor mEditor;
 
     public UserManager(Context context) {
-        mPrefs = context.getSharedPreferences(KEY_PREFS, Context.MODE_PRIVATE);
+        mPrefs = context.getSharedPreferences("PREF_USER", Context.MODE_PRIVATE);
         mEditor = mPrefs.edit();
     }
 
     public boolean checkLoginValidate(String username, String password) {
-        String realUsername = mPrefs.getString(KEY_USERNAME, "");
-        String realPassword = mPrefs.getString(KEY_PASSWORD, "");
+        String realUsername = mPrefs.getString("EMAIL", "");
+        String realPassword = mPrefs.getString("PASSWORD", "");
 
         if ( (!TextUtils.isEmpty(username) && !TextUtils.isEmpty(password)) &&
                 username.equals(realUsername) && password.equals(realPassword)) {
@@ -37,15 +34,15 @@ public class UserManager {
         return false; //Invalidated case
     }
 
-    public boolean registerUser(String username, String password) {
+    public boolean registerUser(String email, String password) {
 
-        if (TextUtils.isEmpty(username) || TextUtils.isEmpty(password)) {
+        if (TextUtils.isEmpty(email) || TextUtils.isEmpty(password)) {
             return false;
         }
 
         //Record a user into the SharedPreference.
-        mEditor.putString(KEY_USERNAME, username);
-        mEditor.putString(KEY_PASSWORD, password);
+        mEditor.putString("EMAIL", email);
+        mEditor.putString("PASSWORD", password);
         return mEditor.commit();
     }
 }

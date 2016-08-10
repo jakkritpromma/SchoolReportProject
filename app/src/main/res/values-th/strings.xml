@@ -2,9 +2,21 @@
 <resources>
     <string name="app_name">สมุดผลการเรียน</string>
     <string name="login_title">หน้าล๊อคอิน</string>
-    <string name="username_title">ชื่อผู้ใช้</string>
+    <string name="email_title">อีเมล์</string>
     <string name="password_title">รหัสผ่าน</string>
+    <string name="confirm_password_title">ยืนยันรหัสผ่าน</string>
     <string name="button_login">ล๊อคอิน</string>
-    <string name="register">กดที่นี่เพื่อลงทะเบียน</string>
-    <string name="login_error_message">ชื่อผู้ใช้หรือรหัสผ่านไม่ถูกต้อง ทำแฟรกเมนท์ด้วย!</string>
+    <string name="register01">ลงทะเบียน?</string>
+    <string name="register02"><u>กดที่นี่</u></string>
+    <string name="login_error_message">อีเมล์หรือรหัสผ่านไม่ถูกต้อง</string>
+    <string name="register_title">หน้าลงทะเบียน</string>
+    <string name="register_button">ลงทะเบียน</string>
+    <string name="register_success">การลงทะเบียนเสร็จสมบูรณ์</string>
+    <string name="register_error_messages">การลงทะเบียนล้มเหลว</string>
+    <string name="register_password_error">รหัสผ่านไม่ตรง</string>
+    <string name="incorrect_email_form">รูปแบบอีเมล์ไม่ถูกต้อง</string>
+    <string name="remember_email">จำอีเมล์</string>
+    <string name="weak_password">แย่</string>
+    <string name="normal_password">ปานกลาง</string>
+    <string name="strong_password">ดี</string>
 </resources>

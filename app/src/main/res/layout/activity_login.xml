@@ -1,12 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/colorPrimary"
     android:orientation="vertical"
-    android:paddingLeft="16dp"
-    android:paddingRight="16dp">
+    android:paddingLeft="24dp"
+    android:paddingRight="24dp">
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -17,43 +16,61 @@
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:layout_weight="2"
-        android:orientation="vertical"
-        android:padding="16dp"
+        android:background="@color/colorWhite"
         android:gravity="center"
-        android:background="@color/colorWhite">
+        android:orientation="vertical"
+        android:padding="24dp">
 
-        <TextView
+        4<TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@string/login_title"
-            android:textSize="24sp"
-            android:textColor="@color/colorPrimaryDark"
             android:layout_marginBottom="16dp"
-        />
+            android:text="@string/login_title"
+            android:textColor="@color/colorPrimaryDark"
+            android:textSize="22sp" />
 
         <EditText
+            android:id="@+id/EditTextEmailLogInID01"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:padding="16dp"
-            android:id="@+id/EditTextUsernameID01"
-            android:hint="@string/username_title"/>
+            android:hint="@string/email_title"
+            android:padding="12dp" />
 
         <EditText
+            android:id="@+id/EditTextPasswordLogInID01"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:padding="16dp"
-            android:id="@+id/EditTextPasswordID01"
+            android:hint="@string/password_title"
             android:inputType="textPassword"
-            android:hint="@string/password_title"/>
-        <Button
+            android:padding="12dp" />
+
+        <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:id="@+id/ButtonLoginID01"
-            android:background="@drawable/selector_button_default"
-            android:textColor="@color/colorWhite"
-            android:text="@string/button_login"
-            android:textSize="18sp"
-            android:layout_marginTop="16dp"/>
+            android:orientation="horizontal">
+
+            <CheckBox
+                android:id="@+id/CheckBoxLoginID01"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="@string/remember_email"
+                android:textSize="12sp"
+                android:textColor="@color/colorBlack"
+                android:layout_marginTop="16dp"/>
+
+            <Button
+                android:id="@+id/ButtonLoginID01"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:layout_marginTop="16dp"
+                android:background="@drawable/selector_button_default"
+                android:text="@string/button_login"
+                android:textColor="@color/colorWhite"
+                android:textSize="18sp" />
+
+        </LinearLayout>
 
     </LinearLayout>
 
@@ -62,13 +79,28 @@
         android:layout_height="0dp"
         android:layout_weight="1"></LinearLayout>
 
-    <TextView
+    <LinearLayout
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:id="@+id/TextViewRegisterID01"
-        android:text="@string/register"
-        android:textColor="@color/colorWhite"
         android:layout_gravity="center"
-        android:layout_marginBottom="16dp"/>
+        android:layout_weight="0.1"
+        android:orientation="horizontal">
+
+        <TextView
+            android:id="@+id/TextViewRegisterID01"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:padding="4dp"
+            android:text="@string/register01"
+            android:textColor="@color/colorWhite" />
+
+        <TextView
+            android:id="@+id/TextViewRegisterID02"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:padding="4dp"
+            android:text="@string/register02"
+            android:textColor="@color/colorWhite" />
+    </LinearLayout>
 
 </LinearLayout>
