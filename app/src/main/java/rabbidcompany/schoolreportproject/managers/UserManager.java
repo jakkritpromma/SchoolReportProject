@@ -1,21 +1,16 @@
 package rabbidcompany.schoolreportproject.managers;
 
-import android.content.ContentValues;
 import android.content.Context;
 import android.content.SharedPreferences;
-import android.database.Cursor;
-import android.database.sqlite.SQLiteDatabase;
-import android.database.sqlite.SQLiteOpenHelper;
 import android.text.TextUtils;
-import android.util.Log;
 
 /**
  * Created by noneemotion on 5/8/2559.
  */
 public class UserManager {
 
-    private SharedPreferences mPrefs;
-    private SharedPreferences.Editor mEditor;
+    SharedPreferences mPrefs;
+    SharedPreferences.Editor mEditor;
 
     public UserManager(Context context) {
         mPrefs = context.getSharedPreferences("PREF_USER", Context.MODE_PRIVATE);

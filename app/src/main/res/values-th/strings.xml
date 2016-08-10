@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string name="app_name">สมุดผลการเรียน</string>
-    <string name="login_title">หน้าล๊อคอิน</string>
+    <string name="login_title">หน้าเข้าใช้งาน</string>
     <string name="email_title">อีเมล์</string>
     <string name="password_title">รหัสผ่าน</string>
     <string name="confirm_password_title">ยืนยันรหัสผ่าน</string>
-    <string name="button_login">ล๊อคอิน</string>
+    <string name="button_login">เข้าใช้งาน</string>
     <string name="register01">ลงทะเบียน?</string>
     <string name="register02"><u>กดที่นี่</u></string>
     <string name="login_error_message">อีเมล์หรือรหัสผ่านไม่ถูกต้อง</string>
@@ -19,4 +19,10 @@
     <string name="weak_password">แย่</string>
     <string name="normal_password">ปานกลาง</string>
     <string name="strong_password">ดี</string>
+
+    <string name="menu">รายการ</string>
+    <string name="grade_summary">สรุปผลการเรียน</string>
+    <string name="setting">การตั้งค่า</string>
+    <string name="help_and_support">ความช่วยเหลือและการสนับสนุน</string>
+    <string name="logout">ออกจากระบบ</string>
 </resources>

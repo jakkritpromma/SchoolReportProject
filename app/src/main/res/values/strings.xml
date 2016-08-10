@@ -19,4 +19,13 @@
     <string name="normal_password">Normal</string>
     <string name="strong_password">Strong</string>
 
+    <string name="open_drawer">Open Drawer</string>
+    <string name="close_drawer">Close Drawer</string>
+
+    <string name="menu">Menu</string>
+    <string name="grade_summary">Grade Summary</string>
+    <string name="setting">Setting</string>
+    <string name="help_and_support">Help and Support</string>
+    <string name="logout">Log Out</string>
+
 </resources>

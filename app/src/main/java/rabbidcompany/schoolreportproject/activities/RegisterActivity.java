@@ -4,7 +4,6 @@ package rabbidcompany.schoolreportproject.activities;
  * Created by noneemotion on 5/8/2559.
  */
 
-import android.content.Context;
 import android.content.pm.ActivityInfo;
 import android.os.Bundle;
 import android.support.v7.app.ActionBarActivity;
@@ -16,26 +15,20 @@ import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import java.util.regex.Matcher;
-import java.util.regex.Pattern;
-
 import rabbidcompany.schoolreportproject.R;
 import rabbidcompany.schoolreportproject.managers.UserManager;
-import rabbidcompany.schoolreportproject.users.User;
-import rabbidcompany.schoolreportproject.utilities.CustomViewGroup01;
 
 public class RegisterActivity extends ActionBarActivity implements View.OnClickListener, TextWatcher {
 
     /*********************************************************************************************
      * *Variables(s)
      *********************************************************************************************/
-
-    private EditText editTextEmail;
-    private EditText editTextPassword;
-    private TextView textViewPasswordStrenth;
-    private EditText editTextConfirmPassword;
-    private Button buttonRegister;
-    private UserManager userManager;
+    EditText editTextEmail;
+    EditText editTextPassword;
+    TextView textViewPasswordStrenth;
+    EditText editTextConfirmPassword;
+    Button buttonRegister;
+    UserManager userManager;
 
     /*********************************************************************************************
      * *Functions/Methods(s)
@@ -47,7 +40,6 @@ public class RegisterActivity extends ActionBarActivity implements View.OnClickL
         setContentView(R.layout.activity_register);
 
         userManager = new UserManager(this);
-
         editTextEmail = (EditText) findViewById(R.id.EditTextEmailRegID01);
         editTextPassword = (EditText) findViewById(R.id.EditTextPasswordRegID01);
         editTextPassword.addTextChangedListener(this);
@@ -57,11 +49,12 @@ public class RegisterActivity extends ActionBarActivity implements View.OnClickL
         buttonRegister.setOnClickListener(this);
     }
 
-    public boolean isEmailValid(String email) {
-        String ePattern ="^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@((\\[[0-9]{1,3}\\.[0-9]{1,3}\\.[0-9]{1,3}\\.[0-9]{1,3}\\])|(([a-zA-Z\\-0-9]+\\.)+[a-zA-Z]{2,}))$";
-        Pattern p = Pattern.compile(ePattern);
-        Matcher m = p.matcher(email);
-        return m.matches();
+    public boolean isValidEmail(String givenEmail) {
+        if (givenEmail == null) {
+            return false;
+        } else {
+            return android.util.Patterns.EMAIL_ADDRESS.matcher(givenEmail).matches();
+        }
     }
 
     private void showToast(String text) {
@@ -105,7 +98,7 @@ public class RegisterActivity extends ActionBarActivity implements View.OnClickL
             String password = editTextPassword.getText().toString();
             String confirmPassword = editTextConfirmPassword.getText().toString();
 
-            if (isEmailValid(email) == false) {
+            if (isValidEmail(email) == false) {
                 showToast(getString(R.string.incorrect_email_form));
             } else {
                 //Check the password and the confirmed password.
