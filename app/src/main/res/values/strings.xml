@@ -8,7 +8,7 @@
     <string name="register01">Register?</string>
     <string name="register02"><u>Press here.</u></string>
     <string name="register_button">Register</string>
-    <string name="login_error_message">E-mail or Password is incorrect. Make a fragment too!</string>
+    <string name="login_error_message">E-mail or Password is incorrect.</string>
     <string name="register_title">Registration Page</string>
     <string name="register_success">Registration successful</string>
     <string name="register_error_messages">Registration failed</string>
@@ -18,6 +18,7 @@
     <string name="weak_password">Weak</string>
     <string name="normal_password">Normal</string>
     <string name="strong_password">Strong</string>
+    <string name="welcome_error_message">Error</string>
 
     <string name="open_drawer">Open Drawer</string>
     <string name="close_drawer">Close Drawer</string>
@@ -26,6 +27,19 @@
     <string name="grade_summary">Grade Summary</string>
     <string name="setting">Setting</string>
     <string name="help_and_support">Help and Support</string>
+    <string name="change_password">Change Password</string>
     <string name="logout">Log Out</string>
-
+    <string name="old_password">Old Password</string>
+    <string name="current_password">Current Password</string>
+    <string name="new_password">New Password</string>
+    <string name="button_confirm">Confirm</string>
+    <string name="successfully_change_password">Password changed.</string>
+    <string name="please_input_old_password">Please input the current password.</string>
+    <string name="please_input_new_password">Please input the new password.</string>
+    <string name="current_password_incorrect">The current password is incorrect.</string>
+    <string name="current_and_old_passwords_must_be_different">The new password must not be the same as the current password.</string>
+    <string name="ok">OK</string>
+    <string name="cancel">Cancel</string>
+    <string name="failed">Failed</string>
+    <string name="please_input_passwords">Please input passwords.</string>
 </resources>

@@ -6,7 +6,7 @@ import rabbidcompany.schoolreportproject.users.User;
  * Created by noneemotion on 5/8/2559.
  */
 public interface UserManagerHelper {
-    public static final String DATABASE_NAME = "sqliteDatabaseName01";
+    public static final String DATABASE_NAME = "sqliteDatabaseName";
     public static final int DATABASE_VERSION = 1;
 
     /**Save users' data into the database.
@@ -15,7 +15,7 @@ public interface UserManagerHelper {
      * */
     public long registerUser(User user);
 
-    /**Check whether username and password exist in the database or not?
+    /**Check whether email and password exist in the database or not?
      * In other words, this is a query.
      * Otherwise, return null.
      */

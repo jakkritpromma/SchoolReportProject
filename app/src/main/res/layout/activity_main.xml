@@ -151,6 +151,30 @@
         </LinearLayout>
 
         <LinearLayout
+            android:id="@+id/LinearLayoutChangePasswordID01"
+            android:layout_width="match_parent"
+            android:layout_height="?attr/actionBarSize"
+            android:background="@drawable/selector_menu_background"
+            android:clickable="true"
+            android:orientation="horizontal">
+
+            <ImageView
+                android:layout_width="?attr/actionBarSize"
+                android:layout_height="?attr/actionBarSize"
+                android:background="@drawable/green_button_png24" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="left|center_vertical"
+                android:gravity="center"
+                android:text="@string/change_password"
+                android:textColor="@color/colorWhite"
+                android:textSize="16sp" />
+
+        </LinearLayout>
+
+        <LinearLayout
             android:id="@+id/LinearLayoutLogoutID01"
             android:layout_width="match_parent"
             android:layout_height="?attr/actionBarSize"

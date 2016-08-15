@@ -11,22 +11,26 @@ public class User {
 
     public class Column {
         public static final String ID = BaseColumns._ID;
-        public static final String USERNAME = "username";
+        public static final String EMAIL = "email";
         public static final String PASSWORD = "password";
     }
 
     private int id;
-    private String username;
+    private String email;
     private String password;
 
     //Constructor
-    public User(String username, String password) {
-        this.username = username;
+    public User(String email, String password) {
+        this.email = email;
         this.password = password;
     }
 
     public User(){
 
+    }
+
+    public static String getTABLE() {
+        return TABLE;
     }
 
     public int getId() {
@@ -37,12 +41,12 @@ public class User {
         this.id = id;
     }
 
-    public String getUsername() {
-        return username;
+    public String getEmail() {
+        return email;
     }
 
-    public void setUsername(String username) {
-        this.username = username;
+    public void setEmail(String email) {
+        this.email = email;
     }
 
     public String getPassword() {

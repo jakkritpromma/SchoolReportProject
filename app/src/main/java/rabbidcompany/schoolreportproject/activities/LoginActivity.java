@@ -4,7 +4,6 @@ package rabbidcompany.schoolreportproject.activities;
  * Created by noneemotion on 5/8/2559.
  */
 
-import android.app.DialogFragment;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
@@ -15,21 +14,20 @@ import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.Button;
 import android.widget.CheckBox;
-import android.widget.CompoundButton;
 import android.widget.EditText;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import rabbidcompany.schoolreportproject.R;
-import rabbidcompany.schoolreportproject.fragments.InvalidInfoDialogFragment;
 import rabbidcompany.schoolreportproject.managers.UserManager;
+import rabbidcompany.schoolreportproject.users.User;
 
-public class LoginActivity extends AppCompatActivity implements View.OnClickListener, CompoundButton.OnCheckedChangeListener {
+public class LoginActivity extends AppCompatActivity implements View.OnClickListener {
 
     /*********************************************************************************************
      * Variables(s)
      *********************************************************************************************/
-    EditText editTextEmail;
-    EditText editTextPassword;
+    EditText editTextEmail, editTextPassword;
     Button buttonLogin;
     TextView textViewRegisterPress;
     UserManager userManager;
@@ -38,6 +36,8 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
     CheckBox checkBox;
     Handler handler;
     Runnable runnable;
+    UserManager mManager;
+    User mUser;
     int delayTime;
 
     /*********************************************************************************************
@@ -50,7 +50,10 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
         sharedPref = getSharedPreferences("PREF_USER", Context.MODE_PRIVATE);
         sharedPrefEditor = sharedPref.edit();
 
-        //Check whether or nto this application runs for the first time.
+        mManager = new UserManager(this);
+        mUser = new User();
+
+        //Check whether or not this application runs for the first time.
         if(sharedPref.getBoolean("IS_FIRST_TIME",true)) {
             Intent intent = new Intent(this, SplashScreenActivity.class);
             startActivity(intent);
@@ -88,7 +91,7 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
         textViewRegisterPress.setOnClickListener(this);
         userManager = new UserManager(this);
         checkBox = (CheckBox) findViewById(R.id.CheckBoxLoginID01);
-        checkBox.setOnCheckedChangeListener(this);
+        checkBox.setOnClickListener(this);
 
         boolean isRemember = sharedPref.getBoolean("REMEMBER_EMAIL", false); //Remember Email or not?
         checkBox.setChecked(isRemember);
@@ -105,7 +108,22 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
     private void checkLogin() {
         String email = editTextEmail.getText().toString().trim();
         String password = editTextPassword.getText().toString().trim();
-        boolean isValidated = userManager.checkLoginValidate(email, password);
+        User user = new User(email, password);
+        User validateUser = mManager.checkUserLogin(user);
+
+        if(validateUser == null){
+            showToast(getString(R.string.login_error_message));
+        }
+        else{
+            Intent intent = new Intent(this, MainActivity.class);
+            intent.putExtra(User.Column.EMAIL, validateUser.getEmail());
+            intent.putExtra(User.Column.ID, validateUser.getId());
+            intent.putExtra(User.Column.PASSWORD, validateUser.getPassword());
+            startActivity(intent);
+            finish();
+        }
+
+        /*boolean isValidated = userManager.checkLoginValidate(email, password);
 
         if (isValidated) {
             sharedPrefEditor.putBoolean("IS_LOGGED_IN", true).commit(); //Record the logged in status.
@@ -114,7 +132,7 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
         } else {
             DialogFragment dialogFragment01 = new InvalidInfoDialogFragment();
             dialogFragment01.show(getFragmentManager(), "InvalidInfo");
-        }
+        }*/
     }
 
     private void startMainActivity() {
@@ -127,6 +145,10 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
         startActivity(intent);
     }
 
+    private void showToast(String text) {
+        Toast.makeText(this, text, Toast.LENGTH_SHORT).show();
+    }
+
     /*********************************************************************************************
      * Listener(s)
      *********************************************************************************************/
@@ -134,7 +156,20 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
     public void onClick(View v) {
         if (v == buttonLogin) {
             checkLogin();
-        } else if (v == textViewRegisterPress) {
+        }
+        else if (v == checkBox){
+            if(checkBox.isChecked()){
+                sharedPrefEditor.putBoolean("REMEMBER_EMAIL", true);
+                sharedPrefEditor.putString("EMAIL", editTextEmail.getText().toString());
+                sharedPrefEditor.commit();
+            }
+            else if(!checkBox.isChecked()){
+                sharedPrefEditor.putBoolean("REMEMBER_EMAIL", false);
+                sharedPrefEditor.putString("EMAIL", "");
+                sharedPrefEditor.commit();
+            }
+        }
+        else if (v == textViewRegisterPress) {
             startRegisterActivity();
         }
     }
@@ -142,8 +177,11 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
     /*********************************************
      * checkBox.setOnCheckedChangeListener(this);
      *********************************************/
+    /* //This one does not work well because the checkBox must be pressed before entering the email.
     @Override
     public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
-        sharedPrefEditor.putBoolean("REMEMBER_EMAIL", isChecked).commit(); //isCheck is the new state of buttonView.
-    }
+        sharedPrefEditor.putBoolean("REMEMBER_EMAIL", isChecked); //isCheck is the new state of buttonView.
+        sharedPrefEditor.putString("EMAIL", editTextEmail.getText().toString());
+        //sharedPrefEditor.commit();
+    }*/
 }

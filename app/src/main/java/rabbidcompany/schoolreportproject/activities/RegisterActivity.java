@@ -12,23 +12,25 @@ import android.text.TextWatcher;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
 import rabbidcompany.schoolreportproject.R;
 import rabbidcompany.schoolreportproject.managers.UserManager;
+import rabbidcompany.schoolreportproject.users.User;
 
 public class RegisterActivity extends ActionBarActivity implements View.OnClickListener, TextWatcher {
 
     /*********************************************************************************************
      * *Variables(s)
      *********************************************************************************************/
-    EditText editTextEmail;
-    EditText editTextPassword;
-    TextView textViewPasswordStrenth;
+    ImageView imageViewBack;
+    EditText editTextEmail, editTextPassword;
+    TextView textViewPasswordStrength;
     EditText editTextConfirmPassword;
     Button buttonRegister;
-    UserManager userManager;
+    UserManager mManager;
 
     /*********************************************************************************************
      * *Functions/Methods(s)
@@ -39,14 +41,16 @@ public class RegisterActivity extends ActionBarActivity implements View.OnClickL
         setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
         setContentView(R.layout.activity_register);
 
-        userManager = new UserManager(this);
+        mManager = new UserManager(this);
         editTextEmail = (EditText) findViewById(R.id.EditTextEmailRegID01);
         editTextPassword = (EditText) findViewById(R.id.EditTextPasswordRegID01);
         editTextPassword.addTextChangedListener(this);
-        textViewPasswordStrenth = (TextView) findViewById(R.id.TextViewPasswordStrengthID01);
+        textViewPasswordStrength = (TextView) findViewById(R.id.TextViewPasswordStrengthID01);
         editTextConfirmPassword = (EditText) findViewById(R.id.EditTextConfirmPasswordRegID02);
         buttonRegister = (Button) findViewById(R.id.ButtonRegisterID01);
         buttonRegister.setOnClickListener(this);
+        imageViewBack = (ImageView) findViewById(R.id.ImageViewBackRegID01);
+        imageViewBack.setOnClickListener(this);
     }
 
     public boolean isValidEmail(String givenEmail) {
@@ -58,7 +62,7 @@ public class RegisterActivity extends ActionBarActivity implements View.OnClickL
     }
 
     private void showToast(String text) {
-        Toast.makeText(RegisterActivity.this, text, Toast.LENGTH_SHORT).show();
+        Toast.makeText(this, text, Toast.LENGTH_SHORT).show();
     }
 
     private boolean isUpperCaseFound(String givenPassword) {
@@ -104,20 +108,33 @@ public class RegisterActivity extends ActionBarActivity implements View.OnClickL
                 //Check the password and the confirmed password.
 
                 if (password.equals(confirmPassword)) {
-                    boolean isSuccess = userManager.registerUser(email, password);
+                    User user = new User(email, password);
+                    long rowId = mManager.registerUser(user);
+
+                    if(rowId == -1){
+                        showToast(getString(R.string.register_error_messages));
+                    }
+                    else{
+                        showToast(getString(R.string.register_success));
+                        finish();
+                    }
+
+                    /*boolean isSuccess = userManager.registerUser(email, password);
 
                     if (isSuccess) {
                         showToast(getString(R.string.register_success));
                         finish(); //Finish this activity.
                     } else {
                         showToast(getString(R.string.register_error_messages));
-                    }
+                    }*/
 
                 } else {
                     showToast(getString(R.string.register_password_error));
                 }
-
             }
+        }
+        if(v == imageViewBack){
+            finish();
         }
     }
 
@@ -146,14 +163,14 @@ public class RegisterActivity extends ActionBarActivity implements View.OnClickL
             numberOfConditions++;
         }
         if (numberOfConditions <= 0) {
-            textViewPasswordStrenth.setText(getResources().getString(R.string.weak_password));
-            textViewPasswordStrenth.setTextColor(getResources().getColor(R.color.colorRed));
+            textViewPasswordStrength.setText(getResources().getString(R.string.weak_password));
+            textViewPasswordStrength.setTextColor(getResources().getColor(R.color.colorRed));
         } else if (numberOfConditions == 1) {
-            textViewPasswordStrenth.setText(getResources().getString(R.string.normal_password));
-            textViewPasswordStrenth.setTextColor(getResources().getColor(R.color.colorYellow));
+            textViewPasswordStrength.setText(getResources().getString(R.string.normal_password));
+            textViewPasswordStrength.setTextColor(getResources().getColor(R.color.colorYellow));
         } else if (numberOfConditions == 2) {
-            textViewPasswordStrenth.setText(getResources().getString(R.string.strong_password));
-            textViewPasswordStrenth.setTextColor(getResources().getColor(R.color.colorGreen));
+            textViewPasswordStrength.setText(getResources().getString(R.string.strong_password));
+            textViewPasswordStrength.setTextColor(getResources().getColor(R.color.colorGreen));
         }
     }
 }

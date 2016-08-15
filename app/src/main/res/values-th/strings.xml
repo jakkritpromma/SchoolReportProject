@@ -19,10 +19,25 @@
     <string name="weak_password">แย่</string>
     <string name="normal_password">ปานกลาง</string>
     <string name="strong_password">ดี</string>
+    <string name="welcome_error_message">พบข้อผิดพลาด</string>
 
     <string name="menu">รายการ</string>
     <string name="grade_summary">สรุปผลการเรียน</string>
     <string name="setting">การตั้งค่า</string>
     <string name="help_and_support">ความช่วยเหลือและการสนับสนุน</string>
+    <string name="change_password">เปลี่ยนรหัสผ่าน</string>
     <string name="logout">ออกจากระบบ</string>
+    <string name="old_password">รหัสผ่านเก่า</string>
+    <string name="current_password">รหัสผ่านปัจจุบัน</string>
+    <string name="new_password">รหัสผ่านใหม่</string>
+    <string name="button_confirm">ยืนยัน</string>
+    <string name="successfully_change_password">เปลี่ยนรหัสผ่านสำเร็จ</string>
+    <string name="please_input_old_password">โปรดกรอกรหัสผ่านเดิม</string>
+    <string name="please_input_new_password">โปรดกรอกรหัสผ่านใหม่</string>
+    <string name="current_password_incorrect">รหัสผ่านปัจจุบันไม่ถูกต้อง</string>
+    <string name="current_and_old_passwords_must_be_different">รหัสผ่านใหม่ต้องไม่ตรงกับรหัสผ่านเก่า</string>
+    <string name="ok">ตกลง</string>
+    <string name="cancel">ยกเลิก</string>
+    <string name="failed">ล้มเหลว</string>
+    <string name="please_input_passwords">กรุณากรอกรหัสผ่าน</string>
 </resources>
