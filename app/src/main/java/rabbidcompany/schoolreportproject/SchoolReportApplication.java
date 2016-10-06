@@ -23,6 +23,7 @@ public class SchoolReportApplication extends Application {
         sharedPref = getSharedPreferences("PREF_USER", Context.MODE_PRIVATE);
         sharedPrefEditor = sharedPref.edit();
         sharedPrefEditor.putBoolean("IS_FIRST_TIME", true).commit();
+
         //You can do this in any activity, but do this in the application class
         //in order to make sure that it works for all codes.
         Firebase.setAndroidContext(this);

@@ -18,6 +18,12 @@ android {
     compileSdkVersion 23
     buildToolsVersion "24.0.0"
 
+    packagingOptions {
+        exclude 'META-INF/LICENSE'
+        exclude 'META-INF/LICENSE-FIREBASE.txt'
+        exclude 'META-INF/NOTICE'
+    }
+    
     defaultConfig {
         applicationId "rabbidcompany.schoolreportproject"
         minSdkVersion 15

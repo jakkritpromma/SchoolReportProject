@@ -7,7 +7,7 @@ import rabbidcompany.schoolreportproject.BuildConfig;
  */
 public final class Constants {
     /**
-     * Constants for Firebase URL
+     * Constants for Firebase URL for sharing things with people
      */
     final String FIREBASE_URL = BuildConfig.UNIQUE_FIREBASE_ROOT_URL;
 }
